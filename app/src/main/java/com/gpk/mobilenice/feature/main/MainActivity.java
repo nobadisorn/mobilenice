@@ -11,7 +11,7 @@ import com.gpk.mobilenice.base.BaseActivity;
 import com.gpk.mobilenice.databinding.ActivityMainBinding;
 import com.gpk.mobilenice.feature.main.adapter.PageAdapter;
 
-public class MainActivity extends BaseActivity implements MainInterface.View{
+public class MainActivity extends BaseActivity implements MainInterface.View {
 
     private ActivityMainBinding binding;
     private PageAdapter pageAdapter;
@@ -19,17 +19,17 @@ public class MainActivity extends BaseActivity implements MainInterface.View{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this , R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         initObj();
         initView();
     }
 
-    private void initObj(){
-        pageAdapter = new PageAdapter(getSupportFragmentManager() , this);
+    private void initObj() {
+        pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
     }
 
-    private void initView(){
+    private void initView() {
         setSupportActionBar(binding.toolbar);
         binding.viewPage.setAdapter(pageAdapter);
         binding.tabLayout.setupWithViewPager(binding.viewPage);
@@ -45,10 +45,9 @@ public class MainActivity extends BaseActivity implements MainInterface.View{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Log.d("DEV" , "CLick");
+            Log.d("DEV", "CLick");
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
