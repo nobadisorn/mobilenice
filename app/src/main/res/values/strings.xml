@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MobileNice</string>
+
+    <string-array name="tabTitle">
+        <item>Mobile List</item>
+        <item>Favorite List</item>
+    </string-array>
 </resources>
