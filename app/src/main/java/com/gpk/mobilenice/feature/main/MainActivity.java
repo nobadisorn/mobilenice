@@ -2,6 +2,9 @@ package com.gpk.mobilenice.feature.main;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseActivity;
@@ -27,8 +30,26 @@ public class MainActivity extends BaseActivity implements MainInterface.View{
     }
 
     private void initView(){
+        setSupportActionBar(binding.toolbar);
         binding.viewPage.setAdapter(pageAdapter);
         binding.tabLayout.setupWithViewPager(binding.viewPage);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Log.d("DEV" , "CLick");
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
