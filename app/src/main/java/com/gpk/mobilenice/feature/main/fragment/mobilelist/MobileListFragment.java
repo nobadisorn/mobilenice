@@ -12,6 +12,9 @@ import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseFragment;
 import com.gpk.mobilenice.databinding.LayoutRecycleViewBinding;
 import com.gpk.mobilenice.feature.main.adapter.MobileListAdapter;
+import com.gpk.mobilenice.model.MobileModel;
+
+import java.util.List;
 
 /**
  * Created by nobtingtong on 10/3/2018 AD.
@@ -21,6 +24,7 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
 
     private LayoutRecycleViewBinding binding;
     private MobileListAdapter mobileListAdapter;
+    private MobileListPresenter mobileListPresenter;
 
     public static MobileListFragment newInstant() {
         MobileListFragment fragment = new MobileListFragment();
@@ -43,11 +47,23 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
     }
 
     private void initObj(){
+        mobileListPresenter = new MobileListPresenter(this);
         mobileListAdapter = new MobileListAdapter();
     }
 
     private void initView(){
         binding.recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycleView.setAdapter(mobileListAdapter);
+        mobileListPresenter.getMobileList();
+    }
+
+    @Override
+    public void updateMobileListData(final List<MobileModel> mobileList) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mobileListAdapter.setMobileList(mobileList);
+            }
+        });
     }
 }

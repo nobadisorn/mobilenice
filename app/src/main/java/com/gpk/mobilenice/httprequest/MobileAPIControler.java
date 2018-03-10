@@ -1,5 +1,7 @@
 package com.gpk.mobilenice.httprequest;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.gpk.mobilenice.model.MobileDetailModel;
@@ -30,9 +32,9 @@ public class MobileAPIControler {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Type listType = new TypeToken<List<MobileModel>>() {
-                }.getType();
-                List<MobileModel> mobileList = new Gson().fromJson(response.body().toString(), listType);
+                String ressponses = response.body().string();
+                Type listType = new TypeToken<List<MobileModel>>(){}.getType();
+                List<MobileModel> mobileList = new Gson().fromJson(ressponses, listType);
                 onGetMobileListener.onSuccess(mobileList);
             }
         });

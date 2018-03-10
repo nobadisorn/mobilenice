@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.databinding.ItemMobileListBinding;
 import com.gpk.mobilenice.feature.main.adapter.viewholder.ListViewHolder;
+import com.gpk.mobilenice.model.MobileModel;
+
+import java.util.List;
 
 /**
  * Created by nobtingtong on 10/3/2018 AD.
@@ -15,6 +18,7 @@ import com.gpk.mobilenice.feature.main.adapter.viewholder.ListViewHolder;
 
 public class MobileListAdapter extends RecyclerView.Adapter {
 
+    private List<MobileModel> mobileList;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -24,11 +28,17 @@ public class MobileListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        ListViewHolder viewHolder = (ListViewHolder)holder;
+        viewHolder.bind(mobileList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return (mobileList != null) ? mobileList.size() : 0;
+    }
+
+    public void setMobileList(List<MobileModel> mobileList) {
+        this.mobileList = mobileList;
+        notifyDataSetChanged();
     }
 }

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.gpk.mobilenice.databinding.ItemMobileListBinding;
+import com.gpk.mobilenice.model.MobileModel;
 
 /**
  * Created by nobtingtong on 10/3/2018 AD.
@@ -14,5 +15,11 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
 
     public ListViewHolder(ItemMobileListBinding binding) {
         super(binding.getRoot());
+        this.binding = binding;
+    }
+
+    public void bind(MobileModel mobileModel){
+        binding.tvTitle.setText(mobileModel.getName());
+        binding.tvDetail.setText(mobileModel.getDescription());
     }
 }
