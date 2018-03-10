@@ -5,6 +5,7 @@
        android:layout_margin="@dimen/padding_area"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
+
        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
            android:padding="@dimen/padding_area"
            android:layout_width="match_parent"
@@ -12,7 +13,7 @@
 
            <ImageView
                android:id="@+id/img_thumb"
-               android:background="@color/colorPrimary"
+               android:scaleType="centerCrop"
                android:layout_width="@dimen/image_thumb_size"
                android:layout_height="@dimen/image_thumb_size" />
 
