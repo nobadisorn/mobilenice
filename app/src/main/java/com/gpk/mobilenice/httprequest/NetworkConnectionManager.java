@@ -13,7 +13,7 @@ public class NetworkConnectionManager {
     private OkHttpClient client = new OkHttpClient();
     private Request request;
 
-    public void callServer(String url ,Callback callback){
+    public void callServer(String url, Callback callback) {
         request = new Request.Builder()
                 .url(url)
                 .build();

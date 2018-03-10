@@ -20,8 +20,7 @@ import okhttp3.Response;
 public class MobileAPIControler {
     NetworkConnectionManager networkConnectionManager = new NetworkConnectionManager();
 
-    public void getMobileList(final OnGetMobileListener onGetMobileListener){
-
+    public void getMobileList(final OnGetMobileListener onGetMobileListener) {
         String url = Url.URL_MOBILE_LIST;
         networkConnectionManager.callServer(url, new Callback() {
             @Override
@@ -31,7 +30,8 @@ public class MobileAPIControler {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Type listType = new TypeToken<List<MobileModel>>(){}.getType();
+                Type listType = new TypeToken<List<MobileModel>>() {
+                }.getType();
                 List<MobileModel> mobileList = new Gson().fromJson(response.body().toString(), listType);
                 onGetMobileListener.onSuccess(mobileList);
             }
@@ -39,9 +39,8 @@ public class MobileAPIControler {
 
     }
 
-    public void getMobileDetail(final OnGetMobileDetailListener onGetMobileDetailListener){
-
-        String url = Url.URL_MOBILE_LIST;
+    public void getMobileDetail(String mobileId, final OnGetMobileDetailListener onGetMobileDetailListener) {
+        String url = String.format(Url.URL_MOBILE_DETAIL, mobileId);
         networkConnectionManager.callServer(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -50,7 +49,8 @@ public class MobileAPIControler {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Type listType = new TypeToken<List<MobileDetailModel>>(){}.getType();
+                Type listType = new TypeToken<List<MobileDetailModel>>() {
+                }.getType();
                 List<MobileDetailModel> mobileList = new Gson().fromJson(response.body().toString(), listType);
                 onGetMobileDetailListener.onSuccess(mobileList);
             }
@@ -58,13 +58,15 @@ public class MobileAPIControler {
 
     }
 
-    public interface OnGetMobileListener{
+    public interface OnGetMobileListener {
         void onSuccess(List<MobileModel> mobileList);
+
         void onFailure();
     }
 
-    public interface OnGetMobileDetailListener{
+    public interface OnGetMobileDetailListener {
         void onSuccess(List<MobileDetailModel> mobileDetailModels);
+
         void onFailure();
     }
 
