@@ -21,6 +21,6 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
     @Override
     public void loadAllFavorite() {
         Log.d("DEV" , "dataBaseManager.getAllFavorite().size() : " + dataBaseManager.getAllFavorite().size());
-        dataBaseManager.getAllFavorite().size();
+        view.updateDataFavoriteAll(dataBaseManager.getAllFavorite());
     }
 }

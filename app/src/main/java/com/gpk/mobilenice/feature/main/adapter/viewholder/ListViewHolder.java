@@ -2,9 +2,11 @@ package com.gpk.mobilenice.feature.main.adapter.viewholder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.CompoundButton;
 
 import com.gpk.mobilenice.R;
+import com.gpk.mobilenice.common.Constant;
 import com.gpk.mobilenice.databinding.ItemMobileListBinding;
 import com.gpk.mobilenice.db.DataBaseManager;
 import com.gpk.mobilenice.model.MobileModel;
@@ -31,14 +33,20 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         dataBaseManager = new DataBaseManager();
     }
 
-    public void bind(MobileModel mobileModel){
+    public void bind(MobileModel mobileModel , int viewType){
         this.mobileModel = mobileModel;
         ImageCache.load(binding.getRoot().getContext() , mobileModel.getThumbImageURL() , binding.imgThumb);
         binding.tvTitle.setText(mobileModel.getName());
         binding.tvDetail.setText(mobileModel.getDescription());
         binding.tvPrice.setText(String.format(context.getResources().getString(R.string.price) , mobileModel.getPrice()));
         binding.tvRating.setText(String.format(context.getResources().getString(R.string.rating) , mobileModel.getRating()));
-        binding.cbFavorite.setChecked(dataBaseManager.checkisFavorite(mobileModel));
+        if (viewType == Constant.VIEW_MOBILE_LIST) {
+            binding.cbFavorite.setChecked(dataBaseManager.checkisFavorite(mobileModel));
+            binding.cbFavorite.setVisibility(View.VISIBLE);
+        }
+        else {
+            binding.cbFavorite.setVisibility(View.GONE);
+        }
 
         initListener();
     }

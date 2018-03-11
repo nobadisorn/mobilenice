@@ -19,6 +19,11 @@ import java.util.List;
 public class MobileListAdapter extends RecyclerView.Adapter {
 
     private List<MobileModel> mobileList;
+    private int viewType;
+
+    public MobileListAdapter(int viewType) {
+        this.viewType = viewType;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,7 +35,7 @@ public class MobileListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ListViewHolder viewHolder = (ListViewHolder)holder;
-        viewHolder.bind(mobileList.get(position));
+        viewHolder.bind(mobileList.get(position) , viewType);
     }
 
     @Override

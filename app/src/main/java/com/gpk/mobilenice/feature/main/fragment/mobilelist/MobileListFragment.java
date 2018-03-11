@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseFragment;
+import com.gpk.mobilenice.common.Constant;
 import com.gpk.mobilenice.databinding.LayoutRecycleViewBinding;
 import com.gpk.mobilenice.feature.main.adapter.MobileListAdapter;
 import com.gpk.mobilenice.model.MobileModel;
@@ -48,7 +49,7 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
 
     private void initObj(){
         mobileListPresenter = new MobileListPresenter(this);
-        mobileListAdapter = new MobileListAdapter();
+        mobileListAdapter = new MobileListAdapter(Constant.VIEW_MOBILE_LIST);
     }
 
     private void initView(){

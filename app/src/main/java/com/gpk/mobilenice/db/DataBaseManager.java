@@ -4,6 +4,9 @@ import android.util.Log;
 
 import com.gpk.mobilenice.model.MobileModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -38,8 +41,9 @@ public class DataBaseManager {
         realm.commitTransaction();
     }
 
-    public RealmResults<MobileModel> getAllFavorite() {
+    public List<MobileModel> getAllFavorite() {
         RealmResults<MobileModel> result = realm.where(MobileModel.class).findAll();
+        List<MobileModel> dd = new ArrayList<>(result);
         return result;
     }
 
