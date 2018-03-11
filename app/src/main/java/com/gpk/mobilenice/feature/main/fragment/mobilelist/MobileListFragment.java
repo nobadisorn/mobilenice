@@ -66,6 +66,11 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            if (mobileListAdapter != null) {
+                mobileListPresenter.sortData();
+            }
+        }
     }
 
     @Override
