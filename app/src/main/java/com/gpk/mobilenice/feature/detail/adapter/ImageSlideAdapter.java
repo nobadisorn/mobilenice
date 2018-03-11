@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ImageSlideAdapter extends FragmentPagerAdapter {
     private List<MobileDetailModel> mobileDetailModels;
+
     public ImageSlideAdapter(FragmentManager fm) {
         super(fm);
     }

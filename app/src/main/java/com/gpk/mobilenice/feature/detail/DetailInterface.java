@@ -9,11 +9,11 @@ import java.util.List;
  */
 
 public interface DetailInterface {
-    interface View{
+    interface View {
         void updateDetailData(List<MobileDetailModel> mobileDetailModels);
     }
 
-    interface Presenter{
+    interface Presenter {
         void loadDetailData(int id);
     }
 }

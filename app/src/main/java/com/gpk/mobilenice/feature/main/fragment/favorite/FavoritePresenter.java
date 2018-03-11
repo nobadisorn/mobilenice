@@ -20,7 +20,7 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
     private FavoriteInterface.View view;
     private List<MobileModel> mobileList;
 
-    public FavoritePresenter(Context context ,FavoriteInterface.View view) {
+    public FavoritePresenter(Context context, FavoriteInterface.View view) {
         this.context = context;
         this.view = view;
         dataBaseManager = DataBaseManager.newInstant();
@@ -34,7 +34,7 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
 
     @Override
     public void sortData() {
-        if (mobileList != null){
+        if (mobileList != null) {
             SortCollection sortCollection = new SortCollection(context);
             sortCollection.sortData(mobileList);
             view.updateDataFavoriteAll(mobileList);

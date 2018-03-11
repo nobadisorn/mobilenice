@@ -30,31 +30,30 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         initObj();
     }
 
-    private void initObj(){
+    private void initObj() {
         dataBaseManager = DataBaseManager.newInstant();
     }
 
-    public void bind(MobileModel mobileModel , int viewType){
+    public void bind(MobileModel mobileModel, int viewType) {
         binding.executePendingBindings();
         this.mobileModel = mobileModel;
         binding.cbFavorite.setOnCheckedChangeListener(null);
-        ImageCache.load(binding.getRoot().getContext() , mobileModel.getThumbImageURL() , binding.imgThumb);
+        ImageCache.load(binding.getRoot().getContext(), mobileModel.getThumbImageURL(), binding.imgThumb);
         binding.tvTitle.setText(mobileModel.getName());
         binding.tvDetail.setText(mobileModel.getDescription());
-        binding.tvPrice.setText(String.format(context.getResources().getString(R.string.price) , mobileModel.getPrice()));
-        binding.tvRating.setText(String.format(context.getResources().getString(R.string.rating) , mobileModel.getRating()));
+        binding.tvPrice.setText(String.format(context.getResources().getString(R.string.price), mobileModel.getPrice()));
+        binding.tvRating.setText(String.format(context.getResources().getString(R.string.rating), mobileModel.getRating()));
         if (viewType == Constant.VIEW_MOBILE_LIST) {
             binding.cbFavorite.setChecked(dataBaseManager.checkIsFavorite(mobileModel));
             binding.cbFavorite.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             binding.cbFavorite.setVisibility(View.GONE);
         }
 
         initListener();
     }
 
-    private void initListener(){
+    private void initListener() {
         binding.cbFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
@@ -66,16 +65,16 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         binding.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DetailActivity.newIntent(context , mobileModel);
+                DetailActivity.newIntent(context, mobileModel);
             }
         });
     }
 
-    private void saveFavorite(){
+    private void saveFavorite() {
         dataBaseManager.saveFavorite(mobileModel);
     }
 
-    private void deleteFavorite(){
+    private void deleteFavorite() {
         dataBaseManager.deleteFavorite(mobileModel);
     }
 }

@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 
 public class ImageCache {
 
-    public static void load(Context context ,String urlImage , ImageView imageView){
+    public static void load(Context context, String urlImage, ImageView imageView) {
         Glide.with(context)
                 .load(urlImage)
                 .into(imageView);

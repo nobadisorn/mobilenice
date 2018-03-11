@@ -33,7 +33,8 @@ public class MobileAPIControler {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responses = response.body().string();
-                Type listType = new TypeToken<List<MobileModel>>(){}.getType();
+                Type listType = new TypeToken<List<MobileModel>>() {
+                }.getType();
                 List<MobileModel> mobileList = new Gson().fromJson(responses, listType);
                 onGetMobileListener.onSuccess(mobileList);
             }
@@ -52,7 +53,8 @@ public class MobileAPIControler {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responses = response.body().string();
-                Type listType = new TypeToken<List<MobileDetailModel>>(){}.getType();
+                Type listType = new TypeToken<List<MobileDetailModel>>() {
+                }.getType();
                 List<MobileDetailModel> mobileList = new Gson().fromJson(responses, listType);
                 onGetMobileDetailListener.onSuccess(mobileList);
             }

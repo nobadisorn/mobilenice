@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         binding.tabLayout.setupWithViewPager(binding.viewPage);
     }
 
-    private void initListener(){
+    private void initListener() {
         sortDialog.setSortDialogListener(new SortDialog.SortDialogListener() {
             @Override
             public void onClickChange() {
@@ -67,8 +67,8 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showSortDialog(){
-        sortDialog.show(getSupportFragmentManager() , getClass().getSimpleName());
+    private void showSortDialog() {
+        sortDialog.show(getSupportFragmentManager(), getClass().getSimpleName());
     }
 
 

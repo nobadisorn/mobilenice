@@ -25,12 +25,12 @@ public class SharedPerfsUtils {
         this.editor = sharedPerfs.edit();
     }
 
-    public void saveSortBy(int sortBy){
+    public void saveSortBy(int sortBy) {
         editor.putInt(KEY_GET_SORT_BY, sortBy);
         editor.commit();
     }
 
-    public int getSortBy(){
-      return sharedPerfs.getInt(KEY_GET_SORT_BY , Constant.SORT_LOW_TO_HIGH);
+    public int getSortBy() {
+        return sharedPerfs.getInt(KEY_GET_SORT_BY, Constant.SORT_LOW_TO_HIGH);
     }
 }

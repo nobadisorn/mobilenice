@@ -9,8 +9,8 @@ import io.realm.RealmObject;
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
-@Parcel(implementations = {MobileModelRealmProxy.class},value = Parcel.Serialization.BEAN, analyze = {MobileModel.class})
-public class MobileModel extends RealmObject{
+@Parcel(implementations = {MobileModelRealmProxy.class}, value = Parcel.Serialization.BEAN, analyze = {MobileModel.class})
+public class MobileModel extends RealmObject {
     private int id;
     private String description;
     private String name;

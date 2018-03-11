@@ -25,7 +25,7 @@ import java.util.List;
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
-public class MobileListFragment extends BaseFragment implements MobileListInterface.View{
+public class MobileListFragment extends BaseFragment implements MobileListInterface.View {
 
     private LayoutRecycleViewBinding binding;
     private MobileListAdapter mobileListAdapter;
@@ -39,7 +39,7 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater , R.layout.layout_recycle_view, container , false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_recycle_view, container, false);
         return binding.getRoot();
     }
 
@@ -51,12 +51,12 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
         initView();
     }
 
-    private void initObj(){
-        mobileListPresenter = new MobileListPresenter(getContext() ,this);
+    private void initObj() {
+        mobileListPresenter = new MobileListPresenter(getContext(), this);
         mobileListAdapter = new MobileListAdapter(Constant.VIEW_MOBILE_LIST);
     }
 
-    private void initView(){
+    private void initView() {
         BusEvent.newInstant().register(this);
         binding.recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycleView.setAdapter(mobileListAdapter);
@@ -66,7 +66,7 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser){
+        if (isVisibleToUser) {
             if (mobileListAdapter != null) {
                 mobileListPresenter.sortData();
             }
@@ -86,7 +86,7 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
     }
 
     @Subscribe
-    public void refreshView(RefreshOnSortEvent event){
+    public void refreshView(RefreshOnSortEvent event) {
         mobileListPresenter.sortData();
     }
 

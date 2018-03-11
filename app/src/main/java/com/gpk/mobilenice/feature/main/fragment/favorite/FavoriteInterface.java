@@ -9,13 +9,15 @@ import java.util.List;
  */
 
 public interface FavoriteInterface {
-    interface View{
+    interface View {
         void updateDataFavoriteAll(List<MobileModel> modelList);
     }
 
-    interface Presenter{
+    interface Presenter {
         void loadAllFavorite();
+
         void sortData();
+
         void deleteFavorite(MobileModel mobileModel);
     }
 }

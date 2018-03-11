@@ -29,7 +29,7 @@ public class ImageFragment extends BaseFragment {
     public static ImageFragment newInstant(MobileDetailModel detailModel) {
         ImageFragment fragment = new ImageFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(KET_GET_DETAIL_DATA , Parcels.wrap(detailModel));
+        bundle.putParcelable(KET_GET_DETAIL_DATA, Parcels.wrap(detailModel));
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -37,7 +37,7 @@ public class ImageFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater , R.layout.layout_image_view, container , false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_image_view, container, false);
         return binding.getRoot();
     }
 
@@ -48,10 +48,12 @@ public class ImageFragment extends BaseFragment {
         initObj();
         initView();
     }
-    private void initObj(){
+
+    private void initObj() {
         detailModel = Parcels.unwrap(getArguments().getParcelable(KET_GET_DETAIL_DATA));
     }
-    private void initView(){
-        ImageCache.load(getContext() , detailModel.getUrl() , binding.imgThumb);
+
+    private void initView() {
+        ImageCache.load(getContext(), detailModel.getUrl(), binding.imgThumb);
     }
 }

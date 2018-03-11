@@ -27,7 +27,7 @@ import java.util.List;
  * Created by nobtingtong on 11/3/2018 AD.
  */
 
-public class FavoriteFragment extends BaseFragment implements FavoriteInterface.View{
+public class FavoriteFragment extends BaseFragment implements FavoriteInterface.View {
 
     private LayoutRecycleViewBinding binding;
     private FavoritePresenter favoritePresenter;
@@ -41,7 +41,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater , R.layout.layout_recycle_view , container , false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_recycle_view, container, false);
         return binding.getRoot();
     }
 
@@ -53,12 +53,12 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
         initView();
     }
 
-    private void initObj(){
-        favoritePresenter = new FavoritePresenter(getContext(),this);
+    private void initObj() {
+        favoritePresenter = new FavoritePresenter(getContext(), this);
         mobileListAdapter = new MobileListAdapter(Constant.VIEW_FOVORITE_LIST);
     }
 
-    private void initView(){
+    private void initView() {
         BusEvent.newInstant().register(this);
         binding.recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycleView.setAdapter(mobileListAdapter);
@@ -93,7 +93,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser)  favoritePresenter.loadAllFavorite();
+        if (isVisibleToUser) favoritePresenter.loadAllFavorite();
     }
 
     @Override
@@ -107,7 +107,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
     }
 
     @Subscribe
-    public void refreshView(RefreshOnSortEvent event){
+    public void refreshView(RefreshOnSortEvent event) {
         favoritePresenter.sortData();
     }
 }

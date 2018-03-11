@@ -18,7 +18,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     private String title[];
 
-    public PageAdapter(FragmentManager fm , Context context) {
+    public PageAdapter(FragmentManager fm, Context context) {
         super(fm);
         title = context.getResources().getStringArray(R.array.tabTitle);
     }

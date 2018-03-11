@@ -8,13 +8,14 @@ import java.util.List;
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
-public interface MobileListInterface  {
-    interface View{
+public interface MobileListInterface {
+    interface View {
         void updateMobileListData(List<MobileModel> mobileList);
     }
 
-    interface Presenter{
+    interface Presenter {
         void getMobileList();
+
         void sortData();
     }
 }

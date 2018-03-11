@@ -19,7 +19,7 @@ public class MobileListPresenter implements MobileListInterface.Presenter {
     private MobileListInterface.View view;
     private List<MobileModel> mobileList;
 
-    public MobileListPresenter(Context context ,MobileListInterface.View view) {
+    public MobileListPresenter(Context context, MobileListInterface.View view) {
         apiControler = new MobileAPIControler();
         this.context = context;
         this.view = view;

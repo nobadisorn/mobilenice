@@ -18,8 +18,8 @@ public class DataBaseManager {
     private static DataBaseManager dataBaseManager;
     private Realm realm = Realm.getDefaultInstance();
 
-    public static DataBaseManager newInstant(){
-        if (dataBaseManager == null){
+    public static DataBaseManager newInstant() {
+        if (dataBaseManager == null) {
             dataBaseManager = new DataBaseManager();
         }
         return dataBaseManager;
@@ -29,7 +29,7 @@ public class DataBaseManager {
         realm = Realm.getDefaultInstance();
     }
 
-    public void saveFavorite(final MobileModel mobileModel){
+    public void saveFavorite(final MobileModel mobileModel) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -38,12 +38,12 @@ public class DataBaseManager {
         }, new Realm.Transaction.OnSuccess() {
             @Override
             public void onSuccess() {
-                Log.d("DEV" , "save onSuccess");
+                Log.d("DEV", "save onSuccess");
             }
         }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
-                Log.d("DEV" , "save onError " + error.getMessage());
+                Log.d("DEV", "save onError " + error.getMessage());
             }
         });
     }
@@ -54,12 +54,12 @@ public class DataBaseManager {
         return results;
     }
 
-    public void deleteFavorite(final MobileModel mobileModel){
+    public void deleteFavorite(final MobileModel mobileModel) {
         final RealmResults<MobileModel> results = realm.where(MobileModel.class)
                 .equalTo("id", mobileModel.getId())
                 .findAll();
 
-        if(results.isValid() && !results.isEmpty()) {
+        if (results.isValid() && !results.isEmpty()) {
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
@@ -69,7 +69,7 @@ public class DataBaseManager {
         }
     }
 
-    public boolean checkIsFavorite(final MobileModel mobileModel){
+    public boolean checkIsFavorite(final MobileModel mobileModel) {
         final RealmResults<MobileModel> results = realm.where(MobileModel.class)
                 .equalTo("id", mobileModel.getId())
                 .findAll();
