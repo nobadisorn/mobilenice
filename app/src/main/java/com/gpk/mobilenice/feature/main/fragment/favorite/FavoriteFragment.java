@@ -16,9 +16,10 @@ import com.gpk.mobilenice.databinding.LayoutRecycleViewBinding;
  * Created by nobtingtong on 11/3/2018 AD.
  */
 
-public class FavoriteFragment extends BaseFragment {
+public class FavoriteFragment extends BaseFragment implements FavoriteInterface.View{
 
     private LayoutRecycleViewBinding binding;
+    private FavoritePresenter favoritePresenter;
 
     public static FavoriteFragment newInstant() {
         FavoriteFragment fragment = new FavoriteFragment();
@@ -35,5 +36,20 @@ public class FavoriteFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initObj();
+        initView();
+    }
+
+    private void initObj(){
+        favoritePresenter = new FavoritePresenter(this);
+    }
+
+    private void initView(){
+        favoritePresenter.loadAllFavorite();
+    }
+
+    @Override
+    public void updateDataFavoriteAll() {
+
     }
 }

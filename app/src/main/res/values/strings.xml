@@ -11,4 +11,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Mobile list Fragment -->
+    <string name="price">Price: $%.2f</string>
+    <string name="rating">Rating: %.1f</string>
 </resources>
+

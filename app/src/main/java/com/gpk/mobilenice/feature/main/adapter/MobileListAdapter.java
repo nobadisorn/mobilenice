@@ -22,8 +22,9 @@ public class MobileListAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemMobileListBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_mobile_list, parent, false);
+        ItemMobileListBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()) , R.layout.item_mobile_list , parent , false);
         return new ListViewHolder(binding);
+
     }
 
     @Override

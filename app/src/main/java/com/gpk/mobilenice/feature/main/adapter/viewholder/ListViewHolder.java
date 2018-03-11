@@ -1,8 +1,12 @@
 package com.gpk.mobilenice.feature.main.adapter.viewholder;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
 
+import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.databinding.ItemMobileListBinding;
+import com.gpk.mobilenice.db.DataBaseManager;
 import com.gpk.mobilenice.model.MobileModel;
 import com.gpk.mobilenice.utils.ImageCache;
 
@@ -12,15 +16,48 @@ import com.gpk.mobilenice.utils.ImageCache;
 
 public class ListViewHolder extends RecyclerView.ViewHolder {
     private ItemMobileListBinding binding;
+    private MobileModel mobileModel;
+    private DataBaseManager dataBaseManager;
+    private Context context;
 
     public ListViewHolder(ItemMobileListBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
+        this.context = binding.getRoot().getContext();
+        initObj();
+    }
+
+    private void initObj(){
+        dataBaseManager = new DataBaseManager();
     }
 
     public void bind(MobileModel mobileModel){
+        this.mobileModel = mobileModel;
         ImageCache.load(binding.getRoot().getContext() , mobileModel.getThumbImageURL() , binding.imgThumb);
         binding.tvTitle.setText(mobileModel.getName());
         binding.tvDetail.setText(mobileModel.getDescription());
+        binding.tvPrice.setText(String.format(context.getResources().getString(R.string.price) , mobileModel.getPrice()));
+        binding.tvRating.setText(String.format(context.getResources().getString(R.string.rating) , mobileModel.getRating()));
+        binding.cbFavorite.setChecked(dataBaseManager.checkisFavorite(mobileModel));
+
+        initListener();
+    }
+
+    private void initListener(){
+        binding.cbFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
+                if (isCheck) saveFavorite();
+                else deleteFavorite();
+            }
+        });
+    }
+
+    private void saveFavorite(){
+        dataBaseManager.saveFavorite(mobileModel);
+    }
+
+    private void deleteFavorite(){
+        dataBaseManager.deleteFavorite(mobileModel);
     }
 }

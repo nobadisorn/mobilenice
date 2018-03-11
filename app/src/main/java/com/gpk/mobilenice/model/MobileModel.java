@@ -1,10 +1,12 @@
 package com.gpk.mobilenice.model;
 
+import io.realm.RealmObject;
+
 /**
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
-public class MobileModel {
+public class MobileModel extends RealmObject{
     private int id;
     private String description;
     private String name;
