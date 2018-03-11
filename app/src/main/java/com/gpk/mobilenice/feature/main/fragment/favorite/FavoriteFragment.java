@@ -84,11 +84,6 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
         });
     }
 
-    @Override
-    public void refreshOnSort() {
-        favoritePresenter.sortData();
-    }
-
     @Subscribe
     public void refreshView(RefreshOnSortEvent event){
         favoritePresenter.sortData();

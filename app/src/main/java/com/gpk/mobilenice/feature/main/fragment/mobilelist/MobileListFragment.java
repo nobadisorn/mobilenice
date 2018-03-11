@@ -80,11 +80,6 @@ public class MobileListFragment extends BaseFragment implements MobileListInterf
         });
     }
 
-    @Override
-    public void refreshOnSort() {
-        mobileListPresenter.sortData();
-    }
-
     @Subscribe
     public void refreshView(RefreshOnSortEvent event){
         mobileListPresenter.sortData();

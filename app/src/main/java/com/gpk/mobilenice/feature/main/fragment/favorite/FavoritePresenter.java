@@ -37,7 +37,7 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
         if (mobileList != null){
             SortCollection sortCollection = new SortCollection(context);
             sortCollection.sortData(mobileList);
-            view.updateDataFavoriteAll(dataBaseManager.getAllFavorite());
+            view.updateDataFavoriteAll(mobileList);
         }
     }
 }

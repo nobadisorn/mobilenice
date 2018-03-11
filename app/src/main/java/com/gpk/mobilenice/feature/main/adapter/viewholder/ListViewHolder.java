@@ -35,7 +35,9 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(MobileModel mobileModel , int viewType){
+        binding.executePendingBindings();
         this.mobileModel = mobileModel;
+        binding.cbFavorite.setOnCheckedChangeListener(null);
         ImageCache.load(binding.getRoot().getContext() , mobileModel.getThumbImageURL() , binding.imgThumb);
         binding.tvTitle.setText(mobileModel.getName());
         binding.tvDetail.setText(mobileModel.getDescription());
@@ -56,8 +58,12 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         binding.cbFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
-                if (isCheck) saveFavorite();
-                else deleteFavorite();
+                if (isCheck) {
+                    saveFavorite();
+                }
+                else {
+                    deleteFavorite();
+                }
             }
         });
 
