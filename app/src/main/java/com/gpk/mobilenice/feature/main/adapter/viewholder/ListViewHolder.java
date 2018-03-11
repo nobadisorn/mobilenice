@@ -41,7 +41,7 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         binding.tvPrice.setText(String.format(context.getResources().getString(R.string.price) , mobileModel.getPrice()));
         binding.tvRating.setText(String.format(context.getResources().getString(R.string.rating) , mobileModel.getRating()));
         if (viewType == Constant.VIEW_MOBILE_LIST) {
-            binding.cbFavorite.setChecked(dataBaseManager.checkisFavorite(mobileModel));
+            binding.cbFavorite.setChecked(dataBaseManager.checkIsFavorite(mobileModel));
             binding.cbFavorite.setVisibility(View.VISIBLE);
         }
         else {

@@ -27,6 +27,7 @@ public class SortDialog extends DialogFragment {
 
     private DialogSortBinding binding;
     private SharedPerfsUtils perfsUtils;
+    private SortDialogListener sortDialogListener;
 
     public static SortDialog newInstant() {
         SortDialog sortDialog = new SortDialog();
@@ -36,7 +37,7 @@ public class SortDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater , R.layout.dialog_sort , container , false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_sort, container, false);
         return binding.getRoot();
     }
 
@@ -49,27 +50,37 @@ public class SortDialog extends DialogFragment {
         initListener();
     }
 
-    private void initObj(){
+    private void initObj() {
         perfsUtils = new SharedPerfsUtils(getContext());
     }
 
-    private void initView(){
+    private void initView() {
         Window window = getDialog().getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-
-        ((RadioButton)binding.rbGroup.getChildAt(perfsUtils.getSortBy())).setChecked(true);
+        ((RadioButton) binding.rbGroup.getChildAt(perfsUtils.getSortBy())).setChecked(true);
     }
 
-    private void initListener(){
+    private void initListener() {
         binding.rbGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
-                if (checkId == R.id.rb_low_to_high) perfsUtils.saveSortBy(Constant.SORT_LOW_TO_HIGH);
-                else if (checkId == R.id.rb_high_to_low) perfsUtils.saveSortBy(Constant.SORT_HIGH_TO_LOW);
+                if (checkId == R.id.rb_low_to_high)
+                    perfsUtils.saveSortBy(Constant.SORT_LOW_TO_HIGH);
+                else if (checkId == R.id.rb_high_to_low)
+                    perfsUtils.saveSortBy(Constant.SORT_HIGH_TO_LOW);
                 else if (checkId == R.id.rb_rating) perfsUtils.saveSortBy(Constant.SORT_RATING);
+                if (sortDialogListener != null) sortDialogListener.onClickChange();
                 dismiss();
             }
         });
+    }
+
+    public void setSortDialogListener(SortDialogListener sortDialogListener) {
+        this.sortDialogListener = sortDialogListener;
+    }
+
+    public interface SortDialogListener {
+        void onClickChange();
     }
 }

@@ -8,9 +8,5 @@ public class MainPresenter implements MainInterface.Presenter{
 
 
 
-    @Override
-    public void getMobileList() {
-
-    }
 }
 

@@ -43,8 +43,8 @@ public class DataBaseManager {
 
     public List<MobileModel> getAllFavorite() {
         RealmResults<MobileModel> result = realm.where(MobileModel.class).findAll();
-        List<MobileModel> dd = new ArrayList<>(result);
-        return result;
+        List<MobileModel> results = new ArrayList<>(result);
+        return results;
     }
 
     public void deleteFavorite(final MobileModel mobileModel){
@@ -71,7 +71,7 @@ public class DataBaseManager {
         });
     }
 
-    public boolean checkisFavorite(final MobileModel mobileModel){
+    public boolean checkIsFavorite(final MobileModel mobileModel){
         final RealmResults<MobileModel> results = realm.where(MobileModel.class)
                 .equalTo("id", mobileModel.getId())
                 .findAll();

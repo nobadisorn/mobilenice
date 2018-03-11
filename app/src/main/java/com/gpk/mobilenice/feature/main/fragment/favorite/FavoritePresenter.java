@@ -1,8 +1,13 @@
 package com.gpk.mobilenice.feature.main.fragment.favorite;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.gpk.mobilenice.db.DataBaseManager;
+import com.gpk.mobilenice.model.MobileModel;
+import com.gpk.mobilenice.utils.SortCollection;
+
+import java.util.List;
 
 /**
  * Created by nobtingtong on 11/3/2018 AD.
@@ -10,17 +15,29 @@ import com.gpk.mobilenice.db.DataBaseManager;
 
 public class FavoritePresenter implements FavoriteInterface.Presenter {
 
+    private Context context;
     private DataBaseManager dataBaseManager;
     private FavoriteInterface.View view;
+    private List<MobileModel> mobileList;
 
-    public FavoritePresenter(FavoriteInterface.View view) {
+    public FavoritePresenter(Context context ,FavoriteInterface.View view) {
+        this.context = context;
         this.view = view;
         dataBaseManager = new DataBaseManager();
     }
 
     @Override
     public void loadAllFavorite() {
-        Log.d("DEV" , "dataBaseManager.getAllFavorite().size() : " + dataBaseManager.getAllFavorite().size());
-        view.updateDataFavoriteAll(dataBaseManager.getAllFavorite());
+        mobileList = dataBaseManager.getAllFavorite();
+        sortData();
+    }
+
+    @Override
+    public void sortData() {
+        if (mobileList != null){
+            SortCollection sortCollection = new SortCollection(context);
+            sortCollection.sortData(mobileList);
+            view.updateDataFavoriteAll(dataBaseManager.getAllFavorite());
+        }
     }
 }

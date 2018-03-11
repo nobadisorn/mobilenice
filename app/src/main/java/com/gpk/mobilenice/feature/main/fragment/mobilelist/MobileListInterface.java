@@ -11,9 +11,11 @@ import java.util.List;
 public interface MobileListInterface  {
     interface View{
         void updateMobileListData(List<MobileModel> mobileList);
+        void refreshOnSort();
     }
 
     interface Presenter{
         void getMobileList();
+        void sortData();
     }
 }

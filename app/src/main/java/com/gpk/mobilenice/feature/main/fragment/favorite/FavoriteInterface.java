@@ -11,9 +11,11 @@ import java.util.List;
 public interface FavoriteInterface {
     interface View{
         void updateDataFavoriteAll(List<MobileModel> modelList);
+        void refreshOnSort();
     }
 
     interface Presenter{
         void loadAllFavorite();
+        void sortData();
     }
 }

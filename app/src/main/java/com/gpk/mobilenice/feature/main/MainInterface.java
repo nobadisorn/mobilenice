@@ -6,11 +6,11 @@ package com.gpk.mobilenice.feature.main;
 
 public interface MainInterface {
     interface View{
-        void updateDataMobileList();
+
     }
 
     interface Presenter{
-        void getMobileList();
+
 
     }
 }

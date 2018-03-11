@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 
 import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseFragment;
+import com.gpk.mobilenice.bus.BusEvent;
+import com.gpk.mobilenice.bus.event.RefreshOnSortEvent;
 import com.gpk.mobilenice.common.Constant;
 import com.gpk.mobilenice.databinding.LayoutRecycleViewBinding;
 import com.gpk.mobilenice.feature.main.adapter.MobileListAdapter;
 import com.gpk.mobilenice.model.MobileModel;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -43,21 +46,21 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         initObj();
         initView();
     }
 
-
-
     private void initObj(){
-        favoritePresenter = new FavoritePresenter(this);
+        favoritePresenter = new FavoritePresenter(getContext(),this);
         mobileListAdapter = new MobileListAdapter(Constant.VIEW_FOVORITE_LIST);
     }
 
     private void initView(){
+        BusEvent.newInstant().register(this);
         binding.recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recycleView.setAdapter(mobileListAdapter);
-        favoritePresenter.loadAllFavorite();
+//        favoritePresenter.loadAllFavorite();
     }
     @Override
     public void onResume() {
@@ -79,5 +82,15 @@ public class FavoriteFragment extends BaseFragment implements FavoriteInterface.
                 mobileListAdapter.setMobileList(modelList);
             }
         });
+    }
+
+    @Override
+    public void refreshOnSort() {
+        favoritePresenter.sortData();
+    }
+
+    @Subscribe
+    public void refreshView(RefreshOnSortEvent event){
+        favoritePresenter.sortData();
     }
 }
