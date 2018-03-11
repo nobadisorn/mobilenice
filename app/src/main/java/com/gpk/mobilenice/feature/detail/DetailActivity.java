@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.text.Html;
+import android.view.MenuItem;
 
 import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseActivity;
@@ -53,6 +55,9 @@ public class DetailActivity extends BaseActivity implements DetailInterface.View
     }
 
     private void initView(){
+        setSupportActionBar(binding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         binding.viewPage.setAdapter(imageSlideAdapter);
         detailPresenter.loadDetailData(mobileModel.getId());
         binding.tvPrice.setText(String.format(getResources().getString(R.string.price) , mobileModel.getPrice()));
@@ -60,6 +65,21 @@ public class DetailActivity extends BaseActivity implements DetailInterface.View
         String title = "<b>" + mobileModel.getBrand() + "</b> " + mobileModel.getBrand();
         binding.tvTitle.setText(Html.fromHtml(title));
         binding.tvDetail.setText(mobileModel.getDescription());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+        {
+            onBackPressed();
+            return true;
+        }
+        else
+        {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
