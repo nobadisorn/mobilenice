@@ -2,13 +2,14 @@ package com.gpk.mobilenice.model;
 
 import org.parceler.Parcel;
 
+import io.realm.MobileModelRealmProxy;
 import io.realm.RealmObject;
 
 /**
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
-@Parcel
+@Parcel(implementations = {MobileModelRealmProxy.class},value = Parcel.Serialization.BEAN, analyze = {MobileModel.class})
 public class MobileModel extends RealmObject{
     private int id;
     private String description;

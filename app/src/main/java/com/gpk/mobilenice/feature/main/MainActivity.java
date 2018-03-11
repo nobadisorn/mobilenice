@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sort) {
             showSortDialog();
             return true;
         }
