@@ -1,5 +1,7 @@
 package com.gpk.mobilenice.feature.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,9 @@ import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.base.BaseActivity;
 import com.gpk.mobilenice.databinding.ActivityMainBinding;
 import com.gpk.mobilenice.feature.main.adapter.PageAdapter;
+import com.gpk.mobilenice.feature.main.dialog.SortDialog;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements MainInterface.View {
 
@@ -45,10 +50,15 @@ public class MainActivity extends BaseActivity implements MainInterface.View {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Log.d("DEV", "CLick");
+            showSortDialog();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showSortDialog(){
+        SortDialog sortDialog = SortDialog.newInstant();
+        sortDialog.show(getSupportFragmentManager() , getClass().getSimpleName());
     }
 
     @Override

@@ -23,6 +23,11 @@
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
+    <style name="RadioButtonStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
