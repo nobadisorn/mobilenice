@@ -1,11 +1,14 @@
 package com.gpk.mobilenice.model;
 
+import org.parceler.Parcel;
+
 import io.realm.RealmObject;
 
 /**
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
+@Parcel
 public class MobileModel extends RealmObject{
     private int id;
     private String description;

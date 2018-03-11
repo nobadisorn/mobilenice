@@ -1,9 +1,12 @@
 package com.gpk.mobilenice.model;
 
+import org.parceler.Parcel;
+
 /**
  * Created by nobtingtong on 10/3/2018 AD.
  */
 
+@Parcel
 public class MobileDetailModel {
 
     private int id;

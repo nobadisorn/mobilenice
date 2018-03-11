@@ -9,6 +9,7 @@ import com.gpk.mobilenice.R;
 import com.gpk.mobilenice.common.Constant;
 import com.gpk.mobilenice.databinding.ItemMobileListBinding;
 import com.gpk.mobilenice.db.DataBaseManager;
+import com.gpk.mobilenice.feature.detail.DetailActivity;
 import com.gpk.mobilenice.model.MobileModel;
 import com.gpk.mobilenice.utils.ImageCache;
 
@@ -57,6 +58,13 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
                 if (isCheck) saveFavorite();
                 else deleteFavorite();
+            }
+        });
+
+        binding.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DetailActivity.newIntent(context , mobileModel);
             }
         });
     }
