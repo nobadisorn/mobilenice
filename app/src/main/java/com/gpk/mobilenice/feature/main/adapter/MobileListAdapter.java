@@ -47,4 +47,8 @@ public class MobileListAdapter extends RecyclerView.Adapter {
         this.mobileList = mobileList;
         notifyDataSetChanged();
     }
+
+    public MobileModel getMobileModelByPosition(int position){
+        return mobileList.get(position);
+    }
 }

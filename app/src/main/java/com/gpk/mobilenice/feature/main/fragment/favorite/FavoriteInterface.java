@@ -16,5 +16,6 @@ public interface FavoriteInterface {
     interface Presenter{
         void loadAllFavorite();
         void sortData();
+        void deleteFavorite(MobileModel mobileModel);
     }
 }

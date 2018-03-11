@@ -23,7 +23,7 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
     public FavoritePresenter(Context context ,FavoriteInterface.View view) {
         this.context = context;
         this.view = view;
-        dataBaseManager = new DataBaseManager();
+        dataBaseManager = DataBaseManager.newInstant();
     }
 
     @Override
@@ -39,5 +39,10 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
             sortCollection.sortData(mobileList);
             view.updateDataFavoriteAll(mobileList);
         }
+    }
+
+    @Override
+    public void deleteFavorite(MobileModel mobileModel) {
+        dataBaseManager.deleteFavorite(mobileModel);
     }
 }

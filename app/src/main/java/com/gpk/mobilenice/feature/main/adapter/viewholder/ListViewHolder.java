@@ -31,7 +31,7 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void initObj(){
-        dataBaseManager = new DataBaseManager();
+        dataBaseManager = DataBaseManager.newInstant();
     }
 
     public void bind(MobileModel mobileModel , int viewType){
@@ -58,12 +58,8 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         binding.cbFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
-                if (isCheck) {
-                    saveFavorite();
-                }
-                else {
-                    deleteFavorite();
-                }
+                if (isCheck) saveFavorite();
+                else deleteFavorite();
             }
         });
 
