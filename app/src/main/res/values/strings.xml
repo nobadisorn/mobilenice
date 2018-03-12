@@ -19,7 +19,7 @@
 
     <!-- Sort Dialog -->
     <string name="sort_low_low_high">Price low to high</string>
-    <string name="sort_high_to_low">Price low to high</string>
+    <string name="sort_high_to_low">Price high to low</string>
     <string name="sort_rating">Rating 5-1</string>
 
 </resources>
