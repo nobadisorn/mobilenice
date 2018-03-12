@@ -54,7 +54,7 @@ public class DataBaseManager {
         return results;
     }
 
-    public void deleteFavorite(final MobileModel mobileModel) {
+    public void deleteFavorite(final MobileModel mobileModel ,final DataBaseManagerListener dataBaseManagerListener) {
         final RealmResults<MobileModel> results = realm.where(MobileModel.class)
                 .equalTo("id", mobileModel.getId())
                 .findAll();
@@ -64,6 +64,7 @@ public class DataBaseManager {
                 @Override
                 public void execute(Realm realm) {
                     results.deleteAllFromRealm();
+                    dataBaseManagerListener.onSuccess();
                 }
             });
         }
@@ -75,5 +76,10 @@ public class DataBaseManager {
                 .findAll();
 
         return results.size() > 0;
+    }
+
+    public interface DataBaseManagerListener{
+        void onSuccess();
+        void onFailed();
     }
 }

@@ -75,6 +75,16 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void deleteFavorite() {
-        dataBaseManager.deleteFavorite(mobileModel);
+        dataBaseManager.deleteFavorite(mobileModel, new DataBaseManager.DataBaseManagerListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailed() {
+
+            }
+        });
     }
 }

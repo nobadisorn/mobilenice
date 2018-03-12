@@ -43,6 +43,16 @@ public class FavoritePresenter implements FavoriteInterface.Presenter {
 
     @Override
     public void deleteFavorite(MobileModel mobileModel) {
-        dataBaseManager.deleteFavorite(mobileModel);
+        dataBaseManager.deleteFavorite(mobileModel, new DataBaseManager.DataBaseManagerListener() {
+            @Override
+            public void onSuccess() {
+                loadAllFavorite();
+            }
+
+            @Override
+            public void onFailed() {
+
+            }
+        });
     }
 }
